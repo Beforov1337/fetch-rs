@@ -1,0 +1,27 @@
+[package]
+name = "fetch-rs"
+version = "0.1.0"
+edition = "2024"
+authors = ["Beforov1337"]
+description = "A terminal fetch tool that renders a 3D spinning distro logo with live system info"
+license = "GPL-3.0"
+readme = "README.md"
+repository = "https://github.com/Beforov1337/fetch-rs"
+
+[[bin]]
+name = "fetch"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1.0"
+crossterm = { version = "0.28", features = ["event-stream"] }
+signal-hook = "0.3"
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
